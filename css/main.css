@@ -1,0 +1,126 @@
+body,html {
+	margin: 0;
+	background-color: #303030;
+	min-width: 960px;
+}
+
+.main {
+	/*background-color: gray;*/
+	height: 240px;
+	width: 488px;
+	margin: 0 auto;
+	right: 0;
+	left: 0;
+	margin-top: 200px;
+	border-radius: 10px;
+}
+
+.square {
+ background-color: #303030;
+ height: 200px;
+ width: 200px;
+ display: inline;
+ float: left;
+ margin-left: 20px;
+ margin-right: 20px;
+ margin-top: 20px;
+ border-radius: 10px;
+ font-size: 180px;
+ text-align: center;
+ color: white;
+}
+b .square {
+	margin-top: 10px;
+}
+
+.square-a {
+	border-color: #e6565b;
+	border-width: 2px;
+	border-style: solid;
+}
+
+.square-b {
+	border-color: #524ccd;
+	border-width: 2px;
+	border-style: solid;
+}
+
+.bottom {
+	width: 960px;
+	margin: 0 auto;
+	margin-top: 50px;
+
+	right: 0;
+	left: 0;
+}
+
+.bar {
+	background-color: #4f4f4f;
+	height: 110px;
+	width: 800px;
+	position: absolute;
+	margin: 0 auto;
+	right: 0;
+	left: 0;
+	display: inline-block;
+	float: left;
+}
+.bar-mask {
+	background: -moz-linear-gradient(left, rgba(48,48,48,1) 5%, rgba(48,48,48,0) 25%, rgba(48,48,48,0) 75%, rgba(48,48,48,1) 95%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(5%,rgba(48,48,48,1)), color-stop(25%,rgba(48,48,48,0)), color-stop(75%,rgba(48,48,48,0)), color-stop(95%,rgba(48,48,48,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, rgba(48,48,48,1) 5%,rgba(48,48,48,0) 25%,rgba(48,48,48,0) 75%,rgba(48,48,48,1) 95%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, rgba(48,48,48,1) 5%,rgba(48,48,48,0) 25%,rgba(48,48,48,0) 75%,rgba(48,48,48,1) 95%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, rgba(48,48,48,1) 5%,rgba(48,48,48,0) 25%,rgba(48,48,48,0) 75%,rgba(48,48,48,1) 95%); /* IE10+ */
+	background: linear-gradient(to right, rgba(48,48,48,1) 5%,rgba(48,48,48,0) 25%,rgba(48,48,48,0) 75%,rgba(48,48,48,1) 95%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303030', endColorstr='#303030',GradientType=1 ); /* IE6-9 */
+	height: 110px;
+	width: 850px;
+	position: absolute;
+	margin: 0 auto;
+	right: 0;
+	left: 0;
+}
+
+.font {
+	width: 60px;
+	height: 60px;
+	display: inline;
+	float: left;
+	margin-top: 25px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 60px;
+	text-align: center;
+	color: white;
+}
+
+.arrow-left {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 30px 30px 30px 0;
+	border-color: transparent #007bff transparent transparent;
+	position: absolute;
+	margin-top: 25px;
+}
+
+.arrow-left:hover {
+	cursor: pointer;
+	border-color: transparent #4ca3ff transparent transparent;
+}
+
+.arrow-right {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 30px 0 30px 30px;
+	border-color: transparent transparent transparent #007bff;
+	position: relative;
+	float: right;
+	margin-top: 25px;
+}
+
+.arrow-right:hover {
+	cursor: pointer;
+	border-color: transparent transparent transparent #4ca3ff;
+}
