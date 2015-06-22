@@ -29,8 +29,9 @@ body,html {
  text-align: center;
  color: white;
 }
+
 b .square {
-	margin-top: 10px;
+
 }
 
 .square-a {
@@ -64,6 +65,11 @@ b .square {
 	left: 0;
 	display: inline-block;
 	float: left;
+}
+
+.bar ul {
+	margin: 0;
+	padding: 0;
 }
 .bar-mask {
 	background: -moz-linear-gradient(left, rgba(48,48,48,1) 5%, rgba(48,48,48,0) 25%, rgba(48,48,48,0) 75%, rgba(48,48,48,1) 95%); /* FF3.6+ */
