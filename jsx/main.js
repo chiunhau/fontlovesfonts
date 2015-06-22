@@ -1,10 +1,10 @@
-var data = [ {typeface: "Futura"}, {typeface: "Courier"} ];
+var data = [ {typeface: "Futura"}, {typeface: "Courier"}, {typeface: "Hiragino"}, {typeface: "Arial"}, {typeface: "Avenir"}, {typeface: "Rockwell"} ];
 
 var FontsList = React.createClass({
   render: function() {
   	var fontNodes = this.props.data.map(function(font){
   		return (
-  			<Font>
+  			<Font typeface={font.typeface}>
   			</Font>
   		);
   	});
@@ -19,9 +19,14 @@ var FontsList = React.createClass({
 });
 
 var Font = React.createClass({
+	handleClick: function() {
+		this.setState({
+			isSelected: true
+		})	
+	},
   render: function() {
     return (
-    	<li className="font">
+    	<li className="font" id={this.props.typeface} onClick={this.handleClick}>
     		嘿
     	</li>
     );
