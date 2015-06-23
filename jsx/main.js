@@ -17,13 +17,13 @@ var indicator = { active: "left"};
 
 var Container = React.createClass({
 	getInitialState: function() {
-		return {typefaceLeft: {id: 1, typeface: "futura"}, typefaceRight: {id: 2, typeface: "courier"}}
+		return {typefaceLeft: {id: 1, typeface: "futura"}, typefaceRight: {id: 2, typeface: "courier"}, indicator: {active: "left"}}
 	},
 	setTypefaceLeft: function(id, typeface) {
 		this.setState({typefaceLeft: {id: id, typeface: typeface}});
 	},
-	setTypefaceRight: function(id) {
-		this.setState({typefaceRight: {id: id, typeface: "Courier"}});
+	setTypefaceRight: function(id, typeface) {
+		this.setState({typefaceRight: {id: id, typeface: typeface}});
 	},
 	setActive: function(side) {
     console.log(side);
@@ -34,18 +34,19 @@ var Container = React.createClass({
   	return (
 			<div className="container" >
 				<FontBox typefaceLeft={this.state.typefaceLeft} typefaceRight={this.state.typefaceRight} indicator={this.state.indicator} setActive={this.setActive}/>
-				<FontBar data={this.props.data} setTypefaceLeft={this.setTypefaceLeft}/>
+				<FontBar data={this.props.data} setTypefaceLeft={this.setTypefaceLeft} setTypefaceRight={this.setTypefaceRight} indicator={this.state.indicator}/>
 			</div>
   	);
   }
 });
 
 var FontBox = React.createClass({
+
   render: function() {
 	  return (
 			<div className="font-box" data-side={this.props.indicator.active}>
-				<FontSquareLeft typeface={this.props.typefaceLeft} setActive={this.props.setActive} />
-				<FontSquareRight typeface={this.props.typefaceRight} setActive={this.props.setActive} />
+				<FontSquareLeft typeface={this.props.typefaceLeft} setActive={this.props.setActive} indicator={this.props.indicator}/>
+				<FontSquareRight typeface={this.props.typefaceRight} setActive={this.props.setActive} indicator={this.props.indicator} />
 			</div>
   	);
      
@@ -59,11 +60,17 @@ var FontSquareLeft = React.createClass({
 	},
   render: function() {
     var style = {
-      "font-family":this.props.typeface.typeface
+      fontFamily:this.props.typeface.typeface
     };
+    var cx = React.addons.classSet;
+    var classes = cx({
+      'square': true,
+      'square-left': true,
+      'square-selected': ((this.props.indicator.active === "left") ? true : false)
+    });
 
   	return (
-			<div className="square square-left square-selected" data-type={this.props.typeface.typeface} onClick={this.handleClick} style={style}>
+			<div className={classes} data-type={this.props.typeface.typeface} onClick={this.handleClick} style={style}>
 				G
 			</div>
   	);
@@ -75,8 +82,17 @@ var FontSquareRight = React.createClass({
 		this.props.setActive("right");
 	},
   render: function() {
+    var style = {
+      fontFamily:this.props.typeface.typeface
+    };
+    var cx = React.addons.classSet;
+    var classes = cx({
+      'square': true,
+      'square-left': true,
+      'square-selected': ((this.props.indicator.active === "right") ? true : false)
+    });
   	return (
-			<div className="square square-right" data-type={this.props.typeface.typeface} onClick={this.handleClick}>
+			<div className={classes} data-type={this.props.typeface.typeface} onClick={this.handleClick} style={style}>
 				G
 			</div>
   	);
@@ -88,7 +104,7 @@ var FontBar = React.createClass({
     return (
     	<div className="font-bar">
 	    	<ArrowLeft />
-	    	<FontsList data={this.props.data} setTypefaceLeft={this.props.setTypefaceLeft} />
+	    	<FontsList data={this.props.data} setTypefaceLeft={this.props.setTypefaceLeft} setTypefaceRight={this.props.setTypefaceRight}indicator={this.props.indicator}/>
 	    	
 	    	<ArrowRight />
 	    </div>
@@ -123,9 +139,14 @@ var BarMask = React.createClass({
 
 var FontsList = React.createClass({
 	fontOnClick: function(id, typeface) {
-		console.log("oao");
-		console.log(id);
-		this.props.setTypefaceLeft(id, typeface);
+		console.log(id + '-' + typeface);
+    if (this.props.indicator.active === "left") {
+      this.props.setTypefaceLeft(id, typeface);
+    }
+    else {
+      this.props.setTypefaceRight(id, typeface);
+    }
+		
 	},
   render: function() {
   	var fontNodes = this.props.data.map(function(font){
@@ -149,7 +170,7 @@ var Font = React.createClass({
   	this.props.handleClick(this.props.id, this.props.typeface);
   },
   render: function() { 
-    var style = {"font-family": this.props.typeface};
+    var style = {fontFamily: this.props.typeface};
     return (
     	<li className="font" id={this.props.id} onClick={this.fontClicked} style={style}>
     		G
