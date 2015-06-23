@@ -1,4 +1,4 @@
-var data = [ {typeface: "Futura"}, {typeface: "Courier"}, {typeface: "Hiragino"}, {typeface: "Arial"}, {typeface: "Avenir"}, {typeface: "Rockwell"} ];
+var data = [ {id: 1, typeface: "Futura"}, {id: 2, typeface: "Courier"}, {id: 3, typeface: "Hiragino"}, {id: 4, typeface: "Arial"}, {id: 5, typeface: "Avenir"}, {id: 6, typeface: "Rockwell"} ];
 
 var FontsList = React.createClass({displayName: "FontsList",
   render: function() {
