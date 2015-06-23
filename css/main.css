@@ -4,7 +4,7 @@ body,html {
 	min-width: 960px;
 }
 
-.main {
+.font-box {
 	/*background-color: gray;*/
 	height: 240px;
 	width: 488px;
@@ -30,23 +30,19 @@ body,html {
  color: white;
 }
 
-b .square {
-
-}
-
-.square-a {
+.square-left {
 	border-color: #e6565b;
 	border-width: 2px;
 	border-style: solid;
 }
 
-.square-b {
+.square-right {
 	border-color: #524ccd;
 	border-width: 2px;
 	border-style: solid;
 }
 
-.bottom {
+.font-bar {
 	width: 960px;
 	margin: 0 auto;
 	margin-top: 50px;
@@ -55,7 +51,7 @@ b .square {
 	left: 0;
 }
 
-.bar {
+.font-list {
 	background-color: #4f4f4f;
 	height: 110px;
 	width: 800px;
@@ -67,7 +63,7 @@ b .square {
 	float: left;
 }
 
-.bar ul {
+.font-list ul {
 	margin: 0;
 	padding: 0;
 }
