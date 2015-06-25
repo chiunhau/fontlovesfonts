@@ -1,36 +1,43 @@
-// var data = [ 
-// 	{id: 1, typeface: "futura"}, 
-// 	{id: 2, typeface: "courier"}, 
-// 	{id: 3, typeface: "verdana"}, 
-// 	{id: 4, typeface: "arial"}, 
-// 	{id: 5, typeface: "avenir"}, 
-// 	{id: 6, typeface: "rockwell"}, 
-// 	{id: 7, typeface: "impact"}, 
-// 	{id: 8, typeface: "helvetica"}, 
-// 	{id: 9, typeface: "Lucida Console"}, 
-// 	{id: 10, typeface: "georgia"}
-// ];
-
+// props
 var data = [ 
-  {id: 1, typeface: "chekiangshukesung", top: -55}, 
-  {id: 2, typeface: "datf5", top: -10}, 
-  {id: 3, typeface: "dasa5", top: -10}, 
-  {id: 4, typeface: "xingothic-tc", top: -35}
+  {id: 1, fontFamily: "chekiangshukesung", top: -55}, 
+  {id: 2, fontFamily: "datf5", top: -6}, 
+  {id: 3, fontFamily: "dasa5", top: -10}, 
+  {id: 4, fontFamily: "xingothic-tc", top: -38},
+  {id: 5, fontFamily: "dath1", top: -10},
+  {id: 6, fontFamily: "sourcehansans-tc", top: -38},
+  {id: 7, fontFamily: "wcl-07", top: -10},
+  {id: 8, fontFamily: "dast5", top: -10},
+  {id: 9, fontFamily: "datc5", top: -10},
+  {id: 10, fontFamily: "hanamin", top: -15}
 ];
 
-var typefaceLeft = { id: 1, typeface: "chekiangshukesung", top: -55 };
-var typefaceRight = { id: 2, typeface: "datf5", top: -10};
-var indicator = { active: "left"};
+// state
+var typefaceLeft, typefaceRight, indicator;
 
 var Container = React.createClass({displayName: "Container",
 	getInitialState: function() {
-		return {typefaceLeft: {id: 1, typeface: "chekiangshukesung", top: -55}, typefaceRight: {id: 2, typeface: "datf5", top: -10}, indicator: {active: "left"}}
+		return  { 
+      typefaceLeft: {
+        id: 1,
+        fontFamily: "chekiangshukesung",
+        top: -55
+      }, 
+      typefaceRight: {
+        id: 2,
+        fontFamily: "datf5",
+        top: -10
+      },
+      indicator: {
+        active: "left"
+      }
+    }
 	},
-	setTypefaceLeft: function(id, typeface, top) {
-		this.setState({typefaceLeft: {id: id, typeface: typeface, top: top}});
+	setTypefaceLeft: function(id, fontFamily, top) {
+		this.setState({typefaceLeft: {id: id, fontFamily: fontFamily, top: top}});
 	},
-	setTypefaceRight: function(id, typeface, top) {
-		this.setState({typefaceRight: {id: id, typeface: typeface, top: top}});
+	setTypefaceRight: function(id, fontFamily, top) {
+		this.setState({typefaceRight: {id: id, fontFamily: fontFamily, top: top}});
 	},
 	setActive: function(side) {
     console.log(side);
@@ -67,7 +74,7 @@ var FontSquareLeft = React.createClass({displayName: "FontSquareLeft",
 	},
   render: function() {
     var style = {
-      fontFamily:this.props.typeface.typeface,
+      fontFamily:this.props.typeface.fontFamily,
       top: this.props.typeface.top + "px",
       position: "relative"
     };
@@ -79,7 +86,7 @@ var FontSquareLeft = React.createClass({displayName: "FontSquareLeft",
     });
 
   	return (
-			React.createElement("div", {className: classes, "data-type": this.props.typeface.typeface, onClick: this.handleClick}, 
+			React.createElement("div", {className: classes, "data-type": this.props.typeface.fontFamily, onClick: this.handleClick}, 
 				React.createElement("span", {style: style}, "字")
 			)
   	);
@@ -92,7 +99,7 @@ var FontSquareRight = React.createClass({displayName: "FontSquareRight",
 	},
   render: function() {
     var style = {
-      fontFamily: this.props.typeface.typeface,
+      fontFamily: this.props.typeface.fontFamily,
       top: this.props.typeface.top + "px",
       position: "relative"
     };
@@ -103,7 +110,7 @@ var FontSquareRight = React.createClass({displayName: "FontSquareRight",
       'square-selected': ((this.props.indicator.active === "right") ? true : false)
     });
   	return (
-			React.createElement("div", {className: classes, "data-type": this.props.typeface.typeface, onClick: this.handleClick}, 
+			React.createElement("div", {className: classes, "data-type": this.props.typeface.fontFamily, onClick: this.handleClick}, 
 				React.createElement("span", {style: style}, "字")
 			)
   	);
@@ -149,20 +156,20 @@ var BarMask = React.createClass({displayName: "BarMask",
 });
 
 var FontsList = React.createClass({displayName: "FontsList",
-	fontOnClick: function(id, typeface, top) {
-		console.log(id + '-' + typeface + '-' + top);
+	fontOnClick: function(id, fontFamily, top) {
+		console.log(id + '-' + fontFamily + '-' + top);
     if (this.props.indicator.active === "left") {
-      this.props.setTypefaceLeft(id, typeface, top);
+      this.props.setTypefaceLeft(id, fontFamily, top);
     }
     else {
-      this.props.setTypefaceRight(id, typeface, top);
+      this.props.setTypefaceRight(id, fontFamily, top);
     }
 		
 	},
   render: function() {
   	var fontNodes = this.props.data.map(function(font){
   		return (
-  			React.createElement(Font, {typeface: font.typeface, id: font.id, top: font.top, handleClick: this.fontOnClick})
+  			React.createElement(Font, {fontFamily: font.fontFamily, id: font.id, top: font.top, fontClicked: this.fontOnClick})
   			
   		);
   	}.bind(this));
@@ -177,17 +184,17 @@ var FontsList = React.createClass({displayName: "FontsList",
 });
 
 var Font = React.createClass({displayName: "Font",
-	fontClicked: function() {
-  	this.props.handleClick(this.props.id, this.props.typeface, this.props.top);
+	handleClick: function() {
+  	this.props.fontClicked(this.props.id, this.props.fontFamily, this.props.top);
   },
   render: function() { 
     var style = {
-      fontFamily: this.props.typeface,
+      fontFamily: this.props.fontFamily,
       position: "relative",
       top: this.props.top * 0.36 + "px"
     };
     return (
-    	React.createElement("li", {className: "font", id: this.props.id, onClick: this.fontClicked, style: style}, 
+    	React.createElement("li", {className: "font", id: this.props.id, onClick: this.handleClick, style: style}, 
     		"字" 
     	)
     );
