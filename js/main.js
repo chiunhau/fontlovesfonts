@@ -1,23 +1,30 @@
+// var data = [ 
+// 	{id: 1, typeface: "futura"}, 
+// 	{id: 2, typeface: "courier"}, 
+// 	{id: 3, typeface: "verdana"}, 
+// 	{id: 4, typeface: "arial"}, 
+// 	{id: 5, typeface: "avenir"}, 
+// 	{id: 6, typeface: "rockwell"}, 
+// 	{id: 7, typeface: "impact"}, 
+// 	{id: 8, typeface: "helvetica"}, 
+// 	{id: 9, typeface: "Lucida Console"}, 
+// 	{id: 10, typeface: "georgia"}
+// ];
+
 var data = [ 
-	{id: 1, typeface: "futura"}, 
-	{id: 2, typeface: "courier"}, 
-	{id: 3, typeface: "verdana"}, 
-	{id: 4, typeface: "arial"}, 
-	{id: 5, typeface: "avenir"}, 
-	{id: 6, typeface: "rockwell"}, 
-	{id: 7, typeface: "impact"}, 
-	{id: 8, typeface: "helvetica"}, 
-	{id: 9, typeface: "Lucida Console"}, 
-	{id: 10, typeface: "georgia"}
+  {id: 1, typeface: "chekiangshukesung"}, 
+  {id: 2, typeface: "datf5"}, 
+  {id: 3, typeface: "dasa5"}, 
+  {id: 4, typeface: "xingothic-tc"}
 ];
 
-var typefaceLeft = { id: 1, typeface: "futura" };
-var typefaceRight = { id: 2, typeface: "courier" };
+var typefaceLeft = { id: 1, typeface: "chekiangshukesung" };
+var typefaceRight = { id: 2, typeface: "datf5" };
 var indicator = { active: "left"};
 
 var Container = React.createClass({displayName: "Container",
 	getInitialState: function() {
-		return {typefaceLeft: {id: 1, typeface: "futura"}, typefaceRight: {id: 2, typeface: "courier"}, indicator: {active: "left"}}
+		return {typefaceLeft: {id: 1, typeface: "chekiangshukesung"}, typefaceRight: {id: 2, typeface: "datf5"}, indicator: {active: "left"}}
 	},
 	setTypefaceLeft: function(id, typeface) {
 		this.setState({typefaceLeft: {id: id, typeface: typeface}});
@@ -71,7 +78,7 @@ var FontSquareLeft = React.createClass({displayName: "FontSquareLeft",
 
   	return (
 			React.createElement("div", {className: classes, "data-type": this.props.typeface.typeface, onClick: this.handleClick, style: style}, 
-				"G"
+				React.createElement("span", null, "字")
 			)
   	);
   }
@@ -93,7 +100,7 @@ var FontSquareRight = React.createClass({displayName: "FontSquareRight",
     });
   	return (
 			React.createElement("div", {className: classes, "data-type": this.props.typeface.typeface, onClick: this.handleClick, style: style}, 
-				"G"
+				React.createElement("span", null, "字")
 			)
   	);
   }
@@ -173,7 +180,7 @@ var Font = React.createClass({displayName: "Font",
     var style = {fontFamily: this.props.typeface};
     return (
     	React.createElement("li", {className: "font", id: this.props.id, onClick: this.fontClicked, style: style}, 
-    		"G"
+    		"字" 
     	)
     );
   }
