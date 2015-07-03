@@ -33,12 +33,29 @@ var Container = React.createClass({
       }
     }
 	},
+  typefaceLeft: {
+
+  },
+  typefaceRight: {
+
+  },
+  indicator: {
+
+  },
 	setTypefaceLeft: function(typeface) {
 		this.setState({typefaceLeft: typeface});
 	},
 	setTypefaceRight: function(typeface) {
 		this.setState({typefaceRight: typeface});
 	},
+  setTypeface: {
+    setTypefaceRight: function(typeface) {
+      this.setState({typefaceRight: typeface});
+    },
+    setTypefaceLeft: function(typeface) {
+      this.setState({typefaceLeft: typeface});
+    },
+  },
 	setActive: function(side) {
     console.log(side);
 		this.setState({indicator: {active: side}});
@@ -48,7 +65,7 @@ var Container = React.createClass({
   	return (
 			<div className="container" >
 				<FontBox typefaceLeft={this.state.typefaceLeft} typefaceRight={this.state.typefaceRight} indicator={this.state.indicator} setActive={this.setActive}/>
-				<FontBar data={this.props.data} setTypefaceLeft={this.setTypefaceLeft} setTypefaceRight={this.setTypefaceRight} indicator={this.state.indicator}/>
+				<FontBar data={this.props.data} setTypeface={this.props.setTypeface} setTypefaceLeft={this.setTypefaceLeft} setTypefaceRight={this.setTypefaceRight} indicator={this.state.indicator}/>
 			</div>
   	);
   }
@@ -103,7 +120,7 @@ var FontSquareRight = React.createClass({
     var cx = React.addons.classSet;
     var classes = cx({
       'square': true,
-      'square-left': true,
+      'square-right': true,
       'square-selected': ((this.props.indicator.active === "right") ? true : false)
     });
   	return (

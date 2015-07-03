@@ -1,31 +1,29 @@
 body,html {
 	margin: 0;
-	background-color: #303030;
+	background-color: #f5f5f5;
 	min-width: 960px;
 }
 
 .font-box {
-	/*background-color: gray;*/
-	height: 240px;
-	width: 488px;
+	height: 340px;
+	width: 688px;
 	margin: 0 auto;
 	right: 0;
 	left: 0;
-	margin-top: 200px;
+	margin-top: 100px;
 	border-radius: 10px;
 }
 
 .square {
- background-color: #303030;
- height: 200px;
- width: 200px;
+ height: 300px;
+ width: 300px;
  display: inline;
  float: left;
  margin-left: 20px;
  margin-right: 20px;
  margin-top: 20px;
  border-radius: 10px;
- font-size: 180px;
+ font-size: 280px;
  text-align: center;
  color: white;
 }
@@ -39,13 +37,13 @@ body,html {
 }
 
 .square-left {
-	border-color: #e6565b;
+	background-color: #ff2e2e;
 	border-width: 2px;
 	border-style: solid;
 }
 
 .square-right {
-	border-color: #524ccd;
+	background-color: #1d34e7;
 	border-width: 2px;
 	border-style: solid;
 }
