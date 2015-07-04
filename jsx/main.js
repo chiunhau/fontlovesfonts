@@ -1,6 +1,6 @@
 // props
 var data = [ 
-  {id: 1, fontFamily: "chekiangshukesung", top: -55}, 
+  {id: 1, fontFamily: "chekiangshukesung", top: -80}, 
   {id: 2, fontFamily: "datf5", top: -6}, 
   {id: 3, fontFamily: "dasa5", top: -10}, 
   {id: 4, fontFamily: "xingothic-tc", top: -38},
@@ -13,59 +13,32 @@ var data = [
 ];
 
 // state
-var typefaceLeft, typefaceRight, indicator;
 
 var Container = React.createClass({
 	getInitialState: function() {
 		return  { 
-      typefaceLeft: {
-        id: 1,
-        fontFamily: "chekiangshukesung",
-        top: -55
-      }, 
-      typefaceRight: {
-        id: 2,
-        fontFamily: "datf5",
-        top: -10
-      },
+      typefaceLeft: data[0], 
+      typefaceRight: data[1],
       indicator: {
         active: "left"
       }
     }
 	},
-  typefaceLeft: {
-
-  },
-  typefaceRight: {
-
-  },
-  indicator: {
-
-  },
 	setTypefaceLeft: function(typeface) {
 		this.setState({typefaceLeft: typeface});
 	},
 	setTypefaceRight: function(typeface) {
 		this.setState({typefaceRight: typeface});
 	},
-  setTypeface: {
-    setTypefaceRight: function(typeface) {
-      this.setState({typefaceRight: typeface});
-    },
-    setTypefaceLeft: function(typeface) {
-      this.setState({typefaceLeft: typeface});
-    },
-  },
 	setActive: function(side) {
     console.log(side);
 		this.setState({indicator: {active: side}});
 	},
-
   render: function() {
   	return (
 			<div className="container" >
 				<FontBox typefaceLeft={this.state.typefaceLeft} typefaceRight={this.state.typefaceRight} indicator={this.state.indicator} setActive={this.setActive}/>
-				<FontBar data={this.props.data} setTypeface={this.props.setTypeface} setTypefaceLeft={this.setTypefaceLeft} setTypefaceRight={this.setTypefaceRight} indicator={this.state.indicator}/>
+				<FontBar data={this.props.data} setTypefaceLeft={this.setTypefaceLeft} setTypefaceRight={this.setTypefaceRight} indicator={this.state.indicator}/>
 			</div>
   	);
   }
@@ -84,7 +57,7 @@ var FontBox = React.createClass({
 
 var FontSquareLeft = React.createClass({
 	handleClick: function() {
-		this.props.setActive("left")
+		this.props.setActive("left");
 	},
   render: function() {
     var style = {
@@ -217,6 +190,6 @@ var Font = React.createClass({
 });
 
 React.render(
-	<Container data={data} typefaceLeft={typefaceLeft} typefaceRight={typefaceRight} indicator={indicator} />,
+	<Container data={data} />,
 	document.getElementById("content")
 );
