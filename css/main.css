@@ -58,7 +58,7 @@ body,html {
 }
 
 .font-list {
-	background-color: #4f4f4f;
+	background-opacity: 0;
 	height: 110px;
 	width: 800px;
 	position: absolute;
@@ -87,11 +87,12 @@ body,html {
 	margin: 0 auto;
 	right: 0;
 	left: 0;
+	z-index: -1;
 }
 
 .font {
-	width: 45px;
-	height: 45px;
+	width: 47px;
+	height: 47px;
 	display: inline;
 	float: left;
 	margin-top: 25px;
@@ -99,8 +100,11 @@ body,html {
 	margin-right: 10px;
 	font-size: 45px;
 	text-align: center;
-	color: white;
+	color: #4a4a4a;
 	font-weight: normal;
+}
+.font span {
+
 }
 .font:hover {
 	cursor: pointer;

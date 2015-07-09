@@ -9,18 +9,19 @@ var data = [
   { id: 6,  fontFamily: "wen6", top: 0},
   { id: 7,  fontFamily: "wen7", top: 0},
   { id: 8,  fontFamily: "wen8", top: 0},
-  { id: 9,  fontFamily: "wen9", top: 0},
+  { id: 9,  fontFamily: "wen9", top: -10},
   { id: 10, fontFamily: "wen10", top: 0},
-  { id: 11, fontFamily: "chekiangshukesung", top: -80}, 
-  { id: 12, fontFamily: "datf5", top: -6}, 
-  { id: 13, fontFamily: "dasa5", top: -10}, 
-  { id: 14, fontFamily: "xingothic-tc-w4", top: -38},
-  { id: 15, fontFamily: "dath1", top: -10},
-  { id: 16, fontFamily: "sourcehansans-tc-normal", top: -38},
-  { id: 17, fontFamily: "wcl-07", top: -10},
-  { id: 18, fontFamily: "dast5", top: -10},
-  { id: 19, fontFamily: "datc5", top: -10},
-  { id: 20, fontFamily: "hanamin", top: -15},
+  { id: 11, fontFamily: "chekiangshukesung", top: -93}, 
+  { id: 12, fontFamily: "datf5", top: -52}, 
+  { id: 13, fontFamily: "dasa5", top: -15}, 
+  { id: 14, fontFamily: "xingothic-tc-w4", top: 0},
+  { id: 15, fontFamily: "dath1", top: -50},
+  { id: 16, fontFamily: "sourcehansans-tc-normal", top: -60},
+  { id: 17, fontFamily: "wcl-07", top: -30},
+  { id: 18, fontFamily: "dast5", top: -20},
+  { id: 19, fontFamily: "datc5", top: -23},
+  { id: 20, fontFamily: "hanamin", top: -30},
+  { id: 21,  fontFamily: "", top: 0},
 ];
 
 // state
@@ -28,8 +29,8 @@ var data = [
 var Container = React.createClass({
 	getInitialState: function() {
 		return  { 
-      typefaceLeft: data[0], 
-      typefaceRight: data[1],
+      typefaceLeft: data[1], 
+      typefaceRight: data[2],
       indicator: {
         active: "left"
       }
@@ -113,34 +114,58 @@ var FontBar = React.createClass({
     return {
       stage: {
         first: 0,
+        last: 11
       }
     }
   },
   clickRight: function() {
     var stageFirst = this.state.stage.first;
-    this.setState({
-      stage: {first: stageFirst + 1}
-    });
+    var stageLast = this.state.stage.last;
+    if (stageLast != 21) {
+      this.setState({
+        stage: {
+          first: stageFirst + 1,
+          last: stageLast + 1,
+        },
+      });
+    };
+    
     console.log(this.state.stage.first);
-    $(function() {
-      $('.font').css('left', '-55px');
-    });  
+  },
+  clickLeft: function() {
+    var stageFirst = this.state.stage.first;
+    var stageLast = this.state.stage.last;
+    if(stageFirst != 0) {
+      this.setState({
+        stage: {
+          first: stageFirst - 1,
+          last: stageLast - 1,
+        },
+      });
+    };
+    
+    console.log(this.state.stage.first);
   },
   render: function() {
     return (
     	<div className="font-bar">
-	    	<ArrowLeft />
-	    	<FontsList data={this.props.data} setTypefaceLeft={this.props.setTypefaceLeft} setTypefaceRight={this.props.setTypefaceRight} indicator={this.props.indicator} stage={this.state.stage} />
-	    	<ArrowRight clickRight={this.clickRight} />
+	    	<ArrowLeft clickLeft={this.clickLeft}/>
+        <FontsList data={this.props.data} setTypefaceLeft={this.props.setTypefaceLeft} setTypefaceRight={this.props.setTypefaceRight} indicator={this.props.indicator} stage={this.state.stage} />
+	    	
+        <ArrowRight clickRight={this.clickRight} />
 	    </div>
     );
   }
 });
 
 var ArrowLeft = React.createClass({
+  handleClick: function() {
+    console.log("hola");
+    this.props.clickLeft();
+  },
   render: function() {
     return (
-    	<div className="arrow-left"></div>
+    	<div className="arrow-left" onClick={this.handleClick}></div>
   	);
   }
 });
@@ -178,10 +203,11 @@ var FontsList = React.createClass({
   render: function() {
   	var fontNodes = this.props.data.map(function(font){
   		return (
-  			<Font fontFamily={font.fontFamily} id={font.id} top={font.top} fontClicked={this.fontOnClick} />
+  			<Font fontFamily={font.fontFamily} id={font.id} top={font.top} fontClicked={this.fontOnClick} stage={this.props.stage}/>
   		)
   	}.bind(this));
   	return (
+
   		<div className="font-list">
   			<ul>
   				{fontNodes}
@@ -203,7 +229,9 @@ var Font = React.createClass({
   render: function() { 
     var style = {
       position: "relative",
-      top: this.props.top * 0.32 + "px"
+      top: this.props.top * 0.161 + "px",
+      opacity: ( this.props.id === this.props.stage.first || this.props.id === this.props.stage.last) ? '0' : '1', 
+      display: ( this.props.id >= this.props.stage.first && this.props.id <= this.props.stage.last) ? 'inline' : 'none', 
     };
     var classes = 'font ' + this.props.fontFamily;
     return (
