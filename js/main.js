@@ -1,5 +1,6 @@
 // props
 var data = [
+  { id: 0,  fontFamily: "", top: 0},
   { id: 1,  fontFamily: "wen1", top: 0},
   { id: 2,  fontFamily: "wen2", top: 0},
   { id: 3,  fontFamily: "wen3", top: 0},
@@ -13,9 +14,9 @@ var data = [
   { id: 11, fontFamily: "chekiangshukesung", top: -80}, 
   { id: 12, fontFamily: "datf5", top: -6}, 
   { id: 13, fontFamily: "dasa5", top: -10}, 
-  { id: 14, fontFamily: "xingothic-tc", top: -38},
+  { id: 14, fontFamily: "xingothic-tc-w4", top: -38},
   { id: 15, fontFamily: "dath1", top: -10},
-  { id: 16, fontFamily: "sourcehansans-tc", top: -38},
+  { id: 16, fontFamily: "sourcehansans-tc-normal", top: -38},
   { id: 17, fontFamily: "wcl-07", top: -10},
   { id: 18, fontFamily: "dast5", top: -10},
   { id: 19, fontFamily: "datc5", top: -10},
@@ -108,12 +109,29 @@ var FontSquareRight = React.createClass({displayName: "FontSquareRight",
 });
 
 var FontBar = React.createClass({displayName: "FontBar",
+  getInitialState: function() {
+    return {
+      stage: {
+        first: 0,
+      }
+    }
+  },
+  clickRight: function() {
+    var stageFirst = this.state.stage.first;
+    this.setState({
+      stage: {first: stageFirst + 1}
+    });
+    console.log(this.state.stage.first);
+    $(function() {
+      $('.font').css('left', '-55px');
+    });  
+  },
   render: function() {
     return (
     	React.createElement("div", {className: "font-bar"}, 
 	    	React.createElement(ArrowLeft, null), 
-	    	React.createElement(FontsList, {data: this.props.data, setTypefaceLeft: this.props.setTypefaceLeft, setTypefaceRight: this.props.setTypefaceRight, indicator: this.props.indicator}), 
-	    	React.createElement(ArrowRight, null)
+	    	React.createElement(FontsList, {data: this.props.data, setTypefaceLeft: this.props.setTypefaceLeft, setTypefaceRight: this.props.setTypefaceRight, indicator: this.props.indicator, stage: this.state.stage}), 
+	    	React.createElement(ArrowRight, {clickRight: this.clickRight})
 	    )
     );
   }
@@ -128,9 +146,13 @@ var ArrowLeft = React.createClass({displayName: "ArrowLeft",
 });
 
 var ArrowRight = React.createClass({displayName: "ArrowRight",
+  handleClick: function() {
+    console.log("hola");
+    this.props.clickRight();
+  },
   render: function() {
     return (
-    	React.createElement("div", {className: "arrow-right"})
+    	React.createElement("div", {className: "arrow-right", onClick: this.handleClick})
   	);
   }
 });

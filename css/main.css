@@ -90,14 +90,14 @@ body,html {
 }
 
 .font {
-	width: 60px;
-	height: 60px;
+	width: 45px;
+	height: 45px;
 	display: inline;
 	float: left;
 	margin-top: 25px;
 	margin-left: 10px;
 	margin-right: 10px;
-	font-size: 60px;
+	font-size: 45px;
 	text-align: center;
 	color: white;
 	font-weight: normal;
