@@ -1,15 +1,15 @@
 // props
-var data = [ 
-  {id: 1, fontFamily: "chekiangshukesung", top: -80}, 
-  {id: 2, fontFamily: "datf5", top: -6}, 
-  {id: 3, fontFamily: "dasa5", top: -10}, 
-  {id: 4, fontFamily: "xingothic-tc", top: -38},
-  {id: 5, fontFamily: "dath1", top: -10},
-  {id: 6, fontFamily: "sourcehansans-tc", top: -38},
-  {id: 7, fontFamily: "wcl-07", top: -10},
-  {id: 8, fontFamily: "dast5", top: -10},
-  {id: 9, fontFamily: "datc5", top: -10},
-  {id: 10, fontFamily: "hanamin", top: -15}
+var data = [
+  { id: 1, fontFamily: "wen1", top: 0},
+  { id: 2, fontFamily: "wen2", top: 0},
+  { id: 3, fontFamily: "wen3", top: 0},
+  { id: 4, fontFamily: "wen4", top: 0},
+  { id: 5, fontFamily: "wen5", top: 0},
+  { id: 6, fontFamily: "wen6", top: 0},
+  { id: 7, fontFamily: "wen7", top: 0},
+  { id: 8, fontFamily: "wen8", top: 0},
+  { id: 9, fontFamily: "wen9", top: 0},
+  { id: 10, fontFamily: "wen10", top: 0},
 ];
 
 // state
@@ -61,16 +61,12 @@ var FontSquareLeft = React.createClass({displayName: "FontSquareLeft",
 	},
   render: function() {
     var style = {
-      fontFamily:this.props.typeface.fontFamily,
       top: this.props.typeface.top + "px",
       position: "relative"
     };
-    var cx = React.addons.classSet;
-    var classes = cx({
-      'square': true,
-      'square-left': true,
-      'square-selected': ((this.props.indicator.active === "left") ? true : false)
-    });
+
+    var classes = 'square square-left ' +this.props.typeface.fontFamily;
+    classes.concat((this.props.indicator.active === "left") ? 'square-selected' : '');
 
   	return (
 			React.createElement("div", {className: classes, "data-type": this.props.typeface.fontFamily, onClick: this.handleClick}, 
@@ -86,16 +82,13 @@ var FontSquareRight = React.createClass({displayName: "FontSquareRight",
 	},
   render: function() {
     var style = {
-      fontFamily: this.props.typeface.fontFamily,
       top: this.props.typeface.top + "px",
       position: "relative"
     };
-    var cx = React.addons.classSet;
-    var classes = cx({
-      'square': true,
-      'square-right': true,
-      'square-selected': ((this.props.indicator.active === "right") ? true : false)
-    });
+    var classes = 'square square-right ' + this.props.typeface.fontFamily;
+    classes.concat((this.props.indicator.active === "right") ? 'square-selected' : '');
+
+
   	return (
 			React.createElement("div", {className: classes, "data-type": this.props.typeface.fontFamily, onClick: this.handleClick}, 
 				React.createElement("span", {style: style}, "字")
@@ -177,12 +170,12 @@ var Font = React.createClass({displayName: "Font",
   },
   render: function() { 
     var style = {
-      fontFamily: this.props.fontFamily,
       position: "relative",
       top: this.props.top * 0.32 + "px"
     };
+    var classes = 'font ' + this.props.fontFamily;
     return (
-    	React.createElement("li", {className: "font", id: this.props.id, onClick: this.handleClick, style: style}, 
+    	React.createElement("li", {className: classes, id: this.props.id, onClick: this.handleClick, style: style}, 
     		"字" 
     	)
     );
