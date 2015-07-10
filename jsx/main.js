@@ -50,6 +50,7 @@ var Container = React.createClass({
   	return (
 			<div className="container" >
 				<FontBox typefaceLeft={this.state.typefaceLeft} typefaceRight={this.state.typefaceRight} indicator={this.state.indicator} setActive={this.setActive}/>
+        <hr />  
 				<FontBar data={this.props.data} setTypefaceLeft={this.setTypefaceLeft} setTypefaceRight={this.setTypefaceRight} indicator={this.state.indicator}/>
 			</div>
   	);
@@ -60,10 +61,41 @@ var FontBox = React.createClass({
   render: function() {
 	  return (
 			<div className="font-box" data-side={this.props.indicator.active}>
+        <IndicatorBox indicator={this.props.indicator} />
 				<FontSquareLeft typeface={this.props.typefaceLeft} setActive={this.props.setActive} indicator={this.props.indicator}/>
 				<FontSquareRight typeface={this.props.typefaceRight} setActive={this.props.setActive} indicator={this.props.indicator} />
 			</div>
   	);  
+  }
+});
+var IndicatorBox = React.createClass({
+  render: function() {
+    return (
+      <div className="indicator-box">
+        <IndicatorLeft indicator={this.props.indicator} />
+        <IndicatorRight indicator={this.props.indicator} />
+      </div>
+    );
+  }
+});
+
+var IndicatorLeft = React.createClass({
+  render: function() {
+    var classes = 'indicator indicator-left ';
+    classes += (this.props.indicator.active == "left") ? 'active' : '';
+    return (
+      <div className={classes}></div>
+    );
+  }
+});
+
+var IndicatorRight = React.createClass({
+  render: function() {
+    var classes = 'indicator indicator-right ';
+    classes += (this.props.indicator.active == "right") ? 'active' : '';
+    return (
+      <div className={classes}></div>
+    );
   }
 });
 

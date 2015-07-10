@@ -50,6 +50,7 @@ var Container = React.createClass({displayName: "Container",
   	return (
 			React.createElement("div", {className: "container"}, 
 				React.createElement(FontBox, {typefaceLeft: this.state.typefaceLeft, typefaceRight: this.state.typefaceRight, indicator: this.state.indicator, setActive: this.setActive}), 
+        React.createElement("hr", null), 
 				React.createElement(FontBar, {data: this.props.data, setTypefaceLeft: this.setTypefaceLeft, setTypefaceRight: this.setTypefaceRight, indicator: this.state.indicator})
 			)
   	);
@@ -60,10 +61,41 @@ var FontBox = React.createClass({displayName: "FontBox",
   render: function() {
 	  return (
 			React.createElement("div", {className: "font-box", "data-side": this.props.indicator.active}, 
+        React.createElement(IndicatorBox, {indicator: this.props.indicator}), 
 				React.createElement(FontSquareLeft, {typeface: this.props.typefaceLeft, setActive: this.props.setActive, indicator: this.props.indicator}), 
 				React.createElement(FontSquareRight, {typeface: this.props.typefaceRight, setActive: this.props.setActive, indicator: this.props.indicator})
 			)
   	);  
+  }
+});
+var IndicatorBox = React.createClass({displayName: "IndicatorBox",
+  render: function() {
+    return (
+      React.createElement("div", {className: "indicator-box"}, 
+        React.createElement(IndicatorLeft, {indicator: this.props.indicator}), 
+        React.createElement(IndicatorRight, {indicator: this.props.indicator})
+      )
+    );
+  }
+});
+
+var IndicatorLeft = React.createClass({displayName: "IndicatorLeft",
+  render: function() {
+    var classes = 'indicator indicator-left ';
+    classes += (this.props.indicator.active == "left") ? 'active' : '';
+    return (
+      React.createElement("div", {className: classes})
+    );
+  }
+});
+
+var IndicatorRight = React.createClass({displayName: "IndicatorRight",
+  render: function() {
+    var classes = 'indicator indicator-right ';
+    classes += (this.props.indicator.active == "right") ? 'active' : '';
+    return (
+      React.createElement("div", {className: classes})
+    );
   }
 });
 
