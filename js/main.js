@@ -1,27 +1,27 @@
 // props
 var data = [
-  { id: 0,  fontFamily: "", top: 0},
-  { id: 1,  fontFamily: "wen1", top: 0},
-  { id: 2,  fontFamily: "wen2", top: 0},
-  { id: 3,  fontFamily: "wen3", top: 0},
-  { id: 4,  fontFamily: "wen4", top: 0},
-  { id: 5,  fontFamily: "wen5", top: 0},
-  { id: 6,  fontFamily: "wen6", top: 0},
-  { id: 7,  fontFamily: "wen7", top: 0},
-  { id: 8,  fontFamily: "wen8", top: 0},
-  { id: 9,  fontFamily: "wen9", top: -10},
-  { id: 10, fontFamily: "wen10", top: 0},
-  { id: 11, fontFamily: "chekiangshukesung", top: -93}, 
-  { id: 12, fontFamily: "datf5", top: -52}, 
-  { id: 13, fontFamily: "dasa5", top: -15}, 
-  { id: 14, fontFamily: "xingothic-tc-w4", top: 0},
-  { id: 15, fontFamily: "dath1", top: -50},
-  { id: 16, fontFamily: "sourcehansans-tc-normal", top: -60},
-  { id: 17, fontFamily: "wcl-07", top: -30},
-  { id: 18, fontFamily: "dast5", top: -20},
-  { id: 19, fontFamily: "datc5", top: -23},
-  { id: 20, fontFamily: "hanamin", top: -30},
-  { id: 21,  fontFamily: "", top: 0},
+  { id: 0,  fontFamily: "", top: 0, type: "明體"},
+  { id: 1,  fontFamily: "wen1", top: 0, type: "明體"},
+  { id: 2,  fontFamily: "wen2", top: 0, type: "黑體"},
+  { id: 3,  fontFamily: "wen3", top: 0, type: "宋體"},
+  { id: 4,  fontFamily: "wen4", top: 0, type: "黑體"},
+  { id: 5,  fontFamily: "wen5", top: 0, type: "圓體"},
+  { id: 6,  fontFamily: "wen6", top: 0, type: "隸書"},
+  { id: 7,  fontFamily: "wen7", top: 0, type: "楷體"},
+  { id: 8,  fontFamily: "wen8", top: 0, type: "行書"},
+  { id: 9,  fontFamily: "wen9", top: -10, type: "宋體"},
+  { id: 10, fontFamily: "wen10", top: 0, type: "圓體"},
+  { id: 11, fontFamily: "chekiangshukesung", top: -93, type: "明體"}, 
+  { id: 12, fontFamily: "datf5", top: -52, type: "宋體"}, 
+  { id: 13, fontFamily: "dasa5", top: -15, type: "姚體"}, 
+  { id: 14, fontFamily: "xingothic-tc-w4", top: 0, type: "黑體"},
+  { id: 15, fontFamily: "dath1", top: -50, type: "黑體"},
+  { id: 16, fontFamily: "sourcehansans-tc-normal", top: -60, type: "黑體"},
+  { id: 17, fontFamily: "wcl-07", top: -30, type: "楷體"},
+  { id: 18, fontFamily: "dast5", top: -20, type: "楷體"},
+  { id: 19, fontFamily: "datc5", top: -23, type: "行書"},
+  { id: 20, fontFamily: "hanamin", top: -30, type: "明體"},
+  { id: 21,  fontFamily: "", top: 0, type: "明體"},
 ];
 
 // state
@@ -38,6 +38,7 @@ var Container = React.createClass({displayName: "Container",
 	},
 	setTypefaceLeft: function(typeface) {
 		this.setState({typefaceLeft: typeface});
+    console.log(this.state.typefaceLeft)
 	},
 	setTypefaceRight: function(typeface) {
 		this.setState({typefaceRight: typeface});
@@ -63,7 +64,9 @@ var FontBox = React.createClass({displayName: "FontBox",
 			React.createElement("div", {className: "font-box", "data-side": this.props.indicator.active}, 
         React.createElement(IndicatorBox, {indicator: this.props.indicator}), 
 				React.createElement(FontSquareLeft, {typeface: this.props.typefaceLeft, setActive: this.props.setActive, indicator: this.props.indicator}), 
-				React.createElement(FontSquareRight, {typeface: this.props.typefaceRight, setActive: this.props.setActive, indicator: this.props.indicator})
+				React.createElement(FontSquareRight, {typeface: this.props.typefaceRight, setActive: this.props.setActive, indicator: this.props.indicator}), 
+        React.createElement(FontSquareLeftDesc, {type: this.props.typefaceLeft.type}), 
+        React.createElement(FontSquareRightDesc, {type: this.props.typefaceRight.type})
 			)
   	);  
   }
@@ -106,7 +109,12 @@ var FontSquareLeft = React.createClass({displayName: "FontSquareLeft",
   render: function() {
     var style = {
       top: this.props.typeface.top + "px",
-      position: "relative"
+      position: "relative",
+      display: "block"
+    };
+
+    var styleDisc = {
+      top: this.props.typeface.top + "px",
     };
 
     var classes = 'square square-left ' +this.props.typeface.fontFamily;
@@ -116,6 +124,7 @@ var FontSquareLeft = React.createClass({displayName: "FontSquareLeft",
 			React.createElement("div", {className: classes, "data-type": this.props.typeface.fontFamily, onClick: this.handleClick}, 
 				React.createElement("span", {style: style}, "字")
 			)
+
   	);
   }
 });
@@ -127,8 +136,14 @@ var FontSquareRight = React.createClass({displayName: "FontSquareRight",
   render: function() {
     var style = {
       top: this.props.typeface.top + "px",
-      position: "relative"
+      position: "relative",
+      display: "block"
     };
+
+    var styleDisc = {
+      top: this.props.typeface.top + "px",
+    };
+
     var classes = 'square square-right ' + this.props.typeface.fontFamily;
     classes.concat((this.props.indicator.active === "right") ? 'square-selected' : '');
 
@@ -138,6 +153,30 @@ var FontSquareRight = React.createClass({displayName: "FontSquareRight",
 				React.createElement("span", {style: style}, "字")
 			)
   	);
+  }
+});
+
+var FontSquareLeftDesc = React.createClass({displayName: "FontSquareLeftDesc",
+  render: function() {
+    return (
+      React.createElement("div", {className: "fontSquareLeftDesc"}, 
+        React.createElement("span", null, 
+          this.props.type
+        )
+      )
+    );
+  }
+});
+
+var FontSquareRightDesc = React.createClass({displayName: "FontSquareRightDesc",
+  render: function() {
+    return (
+      React.createElement("div", {className: "fontSquareRightDesc"}, 
+        React.createElement("span", null, 
+          this.props.type
+        )
+      )
+    );
   }
 });
 
@@ -224,7 +263,7 @@ var BarMask = React.createClass({displayName: "BarMask",
 
 var FontsList = React.createClass({displayName: "FontsList",
 	fontOnClick: function(typeface) {
-		console.log(typeface.id + '/' + typeface.fontFamily + '/' + typeface.top);
+		console.log(typeface.id + '/' + typeface.fontFamily + '/' + typeface.top + '/' + typeface.type);
     if (this.props.indicator.active === "left") {
       this.props.setTypefaceLeft(typeface);
     }
@@ -235,7 +274,7 @@ var FontsList = React.createClass({displayName: "FontsList",
   render: function() {
   	var fontNodes = this.props.data.map(function(font){
   		return (
-  			React.createElement(Font, {fontFamily: font.fontFamily, id: font.id, top: font.top, fontClicked: this.fontOnClick, stage: this.props.stage})
+  			React.createElement(Font, {fontFamily: font.fontFamily, id: font.id, top: font.top, type: font.type, fontClicked: this.fontOnClick, stage: this.props.stage})
   		)
   	}.bind(this));
   	return (
@@ -254,8 +293,10 @@ var Font = React.createClass({displayName: "Font",
     var typeface = {
       id: this.props.id,
       fontFamily: this.props.fontFamily,
-      top: this.props.top
+      top: this.props.top,
+      type: this.props.type
     };
+    console.log(this.props.type);
   	this.props.fontClicked(typeface);
   },
   render: function() { 

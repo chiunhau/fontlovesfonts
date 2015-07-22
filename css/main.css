@@ -24,7 +24,7 @@ html::selection {
 	right: 0;
 	left: 0;
 	margin-top: 100px;
-	margin-bottom: 50px;
+	margin-bottom: 80px;
 	border-radius: 10px;
 }
 .indicator-box {
@@ -44,7 +44,7 @@ html::selection {
 }
 
 .indicator.active {
-	background-color: #333;
+	background-color: #ccc;
 }
 .indicator-left {
 	left: 160px;
@@ -79,6 +79,7 @@ html::selection {
 	background-color: #333;
 	border-width: 2px;
 	border-style: solid;
+	position: relative;
 }
 
 .square-right {
@@ -139,14 +140,16 @@ html::selection {
 	margin-right: 10px;
 	font-size: 45px;
 	text-align: center;
-	color: #4a4a4a;
+	color: #666;
 	font-weight: normal;
+	-webkit-transition: font-size 0.1s; /* Safari */
+  transition: font-size 0.1s;
 }
-.font span {
 
-}
 .font:hover {
 	cursor: pointer;
+	color: #333;
+	font-size: 48px;
 }
 
 .arrow-left {
@@ -178,4 +181,17 @@ html::selection {
 .arrow-right:hover {
 	cursor: pointer;
 	border-color: transparent transparent transparent #4ca3ff;
+}
+
+.fontSquareLeftDesc {
+	display: inline;
+	position: relative;
+	top: 40px;
+	left: 155px;
+}
+.fontSquareRightDesc {
+	display: inline;
+	position: relative;
+	top: 40px;
+	left: 470px;
 }
