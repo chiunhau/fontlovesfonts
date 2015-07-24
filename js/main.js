@@ -1,6 +1,5 @@
 // props
 var data = [
-  { id: 0,  fontFamily: "", top: 0, type: "明體"},
   { id: 1,  fontFamily: "wen1", top: 5, type: "明體"},
   { id: 2,  fontFamily: "wen2", top: 5, type: "黑體"},
   { id: 3,  fontFamily: "wen3", top: 0, type: "宋體"},
@@ -10,18 +9,13 @@ var data = [
   { id: 7,  fontFamily: "wen7", top: 0, type: "楷體"},
   { id: 8,  fontFamily: "wen8", top: -10, type: "行書"},
   { id: 9,  fontFamily: "wen9", top: -10, type: "宋體"},
-  { id: 10, fontFamily: "wen10", top: 0, type: "圓體"},
   { id: 11, fontFamily: "chekiangshukesung", top: -93, type: "明體"}, 
-  { id: 12, fontFamily: "datf5", top: -52, type: "宋體"}, 
   { id: 13, fontFamily: "dasa5", top: -15, type: "姚體"}, 
-  { id: 14, fontFamily: "xingothic-tc-w4", top: 0, type: "黑體"},
   { id: 15, fontFamily: "dath1", top: -50, type: "黑體"},
-  { id: 16, fontFamily: "sourcehansans-tc-normal", top: -60, type: "黑體"},
   { id: 17, fontFamily: "wcl-07", top: -30, type: "楷體"},
   { id: 18, fontFamily: "dast5", top: -20, type: "楷體"},
   { id: 19, fontFamily: "datc5", top: -23, type: "行書"},
   { id: 20, fontFamily: "hanamin", top: -30, type: "明體"},
-  { id: 21,  fontFamily: "", top: 0, type: "明體"},
 ];
 
 // state
@@ -220,38 +214,12 @@ var FontBar = React.createClass({displayName: "FontBar",
   render: function() {
     return (
     	React.createElement("div", {className: "font-bar"}, 
-	    	React.createElement(ArrowLeft, {clickLeft: this.clickLeft, stage: this.state.stage}), 
-        React.createElement(FontsList, {data: this.props.data, setTypefaceLeft: this.props.setTypefaceLeft, setTypefaceRight: this.props.setTypefaceRight, indicator: this.props.indicator, stage: this.state.stage}), 
-	    	
-        React.createElement(ArrowRight, {clickRight: this.clickRight, stage: this.state.stage})
+        React.createElement(FontsList, {data: this.props.data, setTypefaceLeft: this.props.setTypefaceLeft, setTypefaceRight: this.props.setTypefaceRight, indicator: this.props.indicator})
 	    )
     );
   }
 });
 
-var ArrowLeft = React.createClass({displayName: "ArrowLeft",
-  handleClick: function() {
-    console.log("hola");
-    this.props.clickLeft();
-  },
-  render: function() {
-    return (
-    	React.createElement("div", {className: "arrow-left", onClick: this.handleClick})
-  	);
-  }
-});
-
-var ArrowRight = React.createClass({displayName: "ArrowRight",
-  handleClick: function() {
-    console.log("hola");
-    this.props.clickRight();
-  },
-  render: function() {
-    return (
-    	React.createElement("div", {className: "arrow-right", onClick: this.handleClick})
-  	);
-  }
-});
 
 var BarMask = React.createClass({displayName: "BarMask",
   render: function() {
@@ -274,7 +242,7 @@ var FontsList = React.createClass({displayName: "FontsList",
   render: function() {
   	var fontNodes = this.props.data.map(function(font){
   		return (
-  			React.createElement(Font, {fontFamily: font.fontFamily, id: font.id, top: font.top, type: font.type, fontClicked: this.fontOnClick, stage: this.props.stage})
+  			React.createElement(Font, {fontFamily: font.fontFamily, id: font.id, top: font.top, type: font.type, fontClicked: this.fontOnClick})
   		)
   	}.bind(this));
   	return (
@@ -303,8 +271,6 @@ var Font = React.createClass({displayName: "Font",
     var style = {
       position: "relative",
       top: this.props.top * 0.161 + "px",
-      opacity: ( this.props.id === this.props.stage.first || this.props.id === this.props.stage.last) ? '0' : '1', 
-      display: ( this.props.id >= this.props.stage.first && this.props.id <= this.props.stage.last) ? 'inline' : 'none', 
     };
     var classes = 'font ' + this.props.fontFamily;
     return (

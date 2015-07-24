@@ -13,17 +13,24 @@ html::selection {
 	background-color: orange;
 }
 
+nav {
+	height: 30px;
+	width: 100%;
+	background-color: #000;
+	position: fixed;
+	top: 0;
+}
 .container {
 	max-width: 1000px;
 	margin: 0 auto;
 }
 .font-box {
 	height: 340px;
-	width: 688px;
+	width: 640px;
 	margin: 0 auto;
 	right: 0;
 	left: 0;
-	margin-top: 100px;
+	margin-top: 90px;
 	margin-bottom: 80px;
 	border-radius: 10px;
 }
@@ -44,25 +51,25 @@ html::selection {
 }
 
 .indicator.active {
-	background-color: #ccc;
+	background-color: #666;
 }
 .indicator-left {
-	left: 160px;
+	left: 146px;
 }
 
 .indicator-right {
-	right: 436px;
+	right: 480px;
 }
 .square {
- height: 300px;
- width: 300px;
+ height: 270px;
+ width: 270px;
  display: inline;
  float: left;
  margin-left: 20px;
  margin-right: 20px;
  margin-top: 20px;
  border-radius: 10px;
- font-size: 280px;
+ font-size: 250px;
  text-align: center;
  color: white;
 }
@@ -100,13 +107,14 @@ html::selection {
 .font-list {
 	background-opacity: 0;
 	height: 110px;
-	width: 800px;
+	width: 600px;
 	position: absolute;
 	margin: 0 auto;
 	right: 0;
 	left: 0;
 	display: inline-block;
 	float: left;
+	padding-left: 45px;
 }
 
 .font-list ul {
@@ -131,14 +139,14 @@ html::selection {
 }
 
 .font {
-	width: 47px;
-	height: 47px;
+	width: 50px;
+	height: 50px;
 	display: inline;
 	float: left;
 	margin-top: 25px;
 	margin-left: 10px;
 	margin-right: 10px;
-	font-size: 45px;
+	font-size: 49px;
 	text-align: center;
 	color: #666;
 	font-weight: normal;
