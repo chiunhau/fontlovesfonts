@@ -1,14 +1,14 @@
 // props
 var data = [
   { id: 0,  fontFamily: "", top: 0, type: "明體"},
-  { id: 1,  fontFamily: "wen1", top: 0, type: "明體"},
-  { id: 2,  fontFamily: "wen2", top: 0, type: "黑體"},
+  { id: 1,  fontFamily: "wen1", top: 5, type: "明體"},
+  { id: 2,  fontFamily: "wen2", top: 5, type: "黑體"},
   { id: 3,  fontFamily: "wen3", top: 0, type: "宋體"},
   { id: 4,  fontFamily: "wen4", top: 0, type: "黑體"},
   { id: 5,  fontFamily: "wen5", top: 0, type: "圓體"},
   { id: 6,  fontFamily: "wen6", top: 0, type: "隸書"},
   { id: 7,  fontFamily: "wen7", top: 0, type: "楷體"},
-  { id: 8,  fontFamily: "wen8", top: 0, type: "行書"},
+  { id: 8,  fontFamily: "wen8", top: -10, type: "行書"},
   { id: 9,  fontFamily: "wen9", top: -10, type: "宋體"},
   { id: 10, fontFamily: "wen10", top: 0, type: "圓體"},
   { id: 11, fontFamily: "chekiangshukesung", top: -93, type: "明體"}, 
@@ -220,10 +220,10 @@ var FontBar = React.createClass({displayName: "FontBar",
   render: function() {
     return (
     	React.createElement("div", {className: "font-bar"}, 
-	    	React.createElement(ArrowLeft, {clickLeft: this.clickLeft}), 
+	    	React.createElement(ArrowLeft, {clickLeft: this.clickLeft, stage: this.state.stage}), 
         React.createElement(FontsList, {data: this.props.data, setTypefaceLeft: this.props.setTypefaceLeft, setTypefaceRight: this.props.setTypefaceRight, indicator: this.props.indicator, stage: this.state.stage}), 
 	    	
-        React.createElement(ArrowRight, {clickRight: this.clickRight})
+        React.createElement(ArrowRight, {clickRight: this.clickRight, stage: this.state.stage})
 	    )
     );
   }
