@@ -32,14 +32,14 @@ var Container = React.createClass({displayName: "Container",
 	},
 	setTypefaceLeft: function(typeface) {
 		this.setState({typefaceLeft: typeface});
-    console.log(this.state.typefaceLeft)
 	},
 	setTypefaceRight: function(typeface) {
 		this.setState({typefaceRight: typeface});
 	},
 	setActive: function(side) {
-    console.log(side);
 		this.setState({indicator: {active: side}});
+    console.log(side); 
+    console.log(this.state.indicator)
 	},
   render: function() {
   	return (
@@ -175,42 +175,6 @@ var FontSquareRightDesc = React.createClass({displayName: "FontSquareRightDesc",
 });
 
 var FontBar = React.createClass({displayName: "FontBar",
-  getInitialState: function() {
-    return {
-      stage: {
-        first: 0,
-        last: 11
-      }
-    }
-  },
-  clickRight: function() {
-    var stageFirst = this.state.stage.first;
-    var stageLast = this.state.stage.last;
-    if (stageLast != 21) {
-      this.setState({
-        stage: {
-          first: stageFirst + 1,
-          last: stageLast + 1,
-        },
-      });
-    };
-    
-    console.log(this.state.stage.first);
-  },
-  clickLeft: function() {
-    var stageFirst = this.state.stage.first;
-    var stageLast = this.state.stage.last;
-    if(stageFirst != 0) {
-      this.setState({
-        stage: {
-          first: stageFirst - 1,
-          last: stageLast - 1,
-        },
-      });
-    };
-    
-    console.log(this.state.stage.first);
-  },
   render: function() {
     return (
     	React.createElement("div", {className: "font-bar"}, 

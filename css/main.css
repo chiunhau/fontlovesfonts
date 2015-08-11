@@ -31,7 +31,7 @@ nav {
 	right: 0;
 	left: 0;
 	margin-top: 90px;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	border-radius: 10px;
 }
 .indicator-box {
@@ -51,7 +51,7 @@ nav {
 }
 
 .indicator.active {
-	background-color: #666;
+	background-color: #ff5757;
 }
 .indicator-left {
 	left: 146px;
@@ -71,34 +71,38 @@ nav {
  border-radius: 10px;
  font-size: 250px;
  text-align: center;
- color: white;
+ color: #111;
+ border-color: gray;
 }
 
 .square:hover {
 	cursor: pointer;
+	border-color: #ff5757;
 }
 
 .square-selected {
-	background-color: #424242;
+	background-color: #ff5757;
 }
 
 .square-left {
-	background-color: #333;
+	/*background-color: #333;*/
 	border-width: 2px;
 	border-style: solid;
 	position: relative;
+	
 }
 
 .square-right {
-	background-color: #333;
+	/*background-color: #333;*/
 	border-width: 2px;
 	border-style: solid;
+
 }
 
 .font-bar {
 	width: 960px;
 	margin: 0 auto;
-	margin-top: 20px;
+	margin-top: 10px;
 
 	right: 0;
 	left: 0;
@@ -146,7 +150,7 @@ nav {
 	margin-top: 25px;
 	margin-left: 10px;
 	margin-right: 10px;
-	font-size: 49px;
+	font-size: 40px;
 	text-align: center;
 	color: #666;
 	font-weight: normal;
@@ -157,7 +161,7 @@ nav {
 .font:hover {
 	cursor: pointer;
 	color: #333;
-	font-size: 48px;
+	font-size: 43px;
 }
 
 .arrow-left {
@@ -195,13 +199,15 @@ nav {
 	display: inline;
 	position: relative;
 	top: 30px;
-	left: 155px;
+	left: 143px;
 	color: #666;
+	font-size: 20px;
 }
 .fontSquareRightDesc {
 	display: inline;
 	position: relative;
 	top: 30px;
-	left: 470px;
+	left: 415px;
 	color: #666;
+	font-size: 20px;
 }
