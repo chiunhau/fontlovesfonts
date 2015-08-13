@@ -117,7 +117,7 @@ var FontSquareLeft = React.createClass({
 
   	return (
 			<div className={classes} data-type={this.props.typeface.fontFamily} onClick={this.handleClick} >
-        <img className="gridBlocks gridBlocksLeft"src="../9-blocks.png" />
+        <img className="gridBlocks gridBlocksLeft"src="9-blocks.png" />
 				<span style={style}>字</span> 
 			</div>
 
@@ -146,7 +146,7 @@ var FontSquareRight = React.createClass({
 
   	return (
 			<div className={classes} data-type={this.props.typeface.fontFamily} onClick={this.handleClick} >
-				<img className="gridBlocks gridBlocksRight"src="../9-blocks.png" />
+				<img className="gridBlocks gridBlocksRight"src="9-blocks.png" />
         <span style={style}>字</span>
 			</div>
   	);
