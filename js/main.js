@@ -112,7 +112,8 @@ var FontSquareLeft = React.createClass({displayName: "FontSquareLeft",
     };
 
     var classes = 'square square-left ' +this.props.typeface.fontFamily;
-    classes.concat((this.props.indicator.active === "left") ? 'square-selected' : '');
+    console.log(this.props.indicator.active);
+    classes.concat((this.props.indicator.active === "left") ? 'square-selected' : 'ga');
 
   	return (
 			React.createElement("div", {className: classes, "data-type": this.props.typeface.fontFamily, onClick: this.handleClick}, 
