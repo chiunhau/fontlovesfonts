@@ -96,7 +96,7 @@ nav {
 	/*background-color: #333;*/
 	border-width: 2px;
 	border-style: solid;
-
+	position: relative;
 }
 
 .font-bar {
@@ -210,4 +210,10 @@ nav {
 	left: 415px;
 	color: #666;
 	font-size: 20px;
+}
+
+.gridBlocks {
+	width: 270px;
+	position: absolute;
+	left: 0;
 }
