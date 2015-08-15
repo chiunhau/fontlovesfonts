@@ -2,6 +2,7 @@ body,html {
 	margin: 0;
 	background-color: #f5f5f5;
 	min-width: 960px;
+
 	-webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -13,12 +14,54 @@ html::selection {
 	background-color: orange;
 }
 
-nav {
-	height: 30px;
+.navbar {
+	height: 40px;
 	width: 100%;
 	background-color: #000;
 	position: fixed;
 	top: 0;
+	z-index: 999;
+}
+
+nav {
+	max-width: 1000px;
+	margin: 0 auto;
+	position: relative;
+}
+nav .brand {
+	position: relative;
+	left: 50px;
+	top: 12px;
+}
+
+nav ul {
+	display: inline;
+	position: relative;
+	left: 600px;
+	top: 2px;
+}
+nav li {
+	display: inline;
+	position: relative;
+	top: 10px;
+	color: #ddd;
+}
+
+nav a:link {
+	color: #ddd;
+	text-decoration: none;
+}
+nav a:visited {
+	color: #ddd;
+	text-decoration: none;
+}
+nav a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+nav a:active {
+	color: #ddd;
+	text-decoration: none;
 }
 .container {
 	max-width: 1000px;
